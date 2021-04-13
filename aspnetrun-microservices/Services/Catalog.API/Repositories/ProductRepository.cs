@@ -31,7 +31,7 @@ namespace Catalog.API.Repositories
             return await context.Products.Find(p => p.Id == id).FirstOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<Product>> GetProductByCategory(string category)
+        public async Task<IEnumerable<Product>> GetProductsByCategory(string category)
         {
             return await context.Products.Find(p => p.Category == category).ToListAsync();
         }
@@ -58,7 +58,7 @@ namespace Catalog.API.Repositories
         Task<IEnumerable<Product>> GetProducts();
         Task<Product> GetProduct(string id);
         Task<IEnumerable<Product>> GetProductByName(string name);
-        Task<IEnumerable<Product>> GetProductByCategory(string category);
+        Task<IEnumerable<Product>> GetProductsByCategory(string category);
 
         Task CreateProduct(Product product);
         Task<bool> UpdateProduct(Product product);
