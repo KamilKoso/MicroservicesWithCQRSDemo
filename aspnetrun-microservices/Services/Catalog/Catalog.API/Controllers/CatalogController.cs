@@ -30,10 +30,10 @@ namespace Catalog.API.Controllers
         }
 
 
-        [HttpGet("{id:length(24)}", Name = "GetProduct")]
+        [HttpGet]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
-        public async Task<ActionResult<Product>> GetProductById(string id)
+        public async Task<ActionResult<Product>> GetProductById([FromQuery]string id)
         {
             var product = await productRepository.GetProduct(id);
             if(product == null)
@@ -44,7 +44,7 @@ namespace Catalog.API.Controllers
             return Ok(product);
         }
 
-        [Route("[action]/{category}", Name = "GetProductByCategory")]
+        [Route("[action]/{category}")]
         [HttpGet]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         public async Task<ActionResult<IEnumerable<Product>>> GetProductsByCategory(string category)
@@ -67,9 +67,9 @@ namespace Catalog.API.Controllers
             return Ok(await productRepository.UpdateProduct(product));
         }
 
-        [HttpDelete("{id:length(24)}", Name = "DeleteProduct")]
+        [HttpDelete]
         [ProducesResponseType((int) HttpStatusCode.OK)]
-        public async Task<ActionResult<bool>> DeleteProductById(string id)
+        public async Task<ActionResult<bool>> DeleteProductById([FromQuery] string id)
         {
             return Ok(await productRepository.DeleteProduct(id));
         }
