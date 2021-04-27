@@ -20,21 +20,21 @@ namespace Basket.API.Controllers
             this.basketRepository = basketRepository ?? throw new ArgumentNullException(nameof(basketRepository));
         }
 
-        [HttpGet]
+        [HttpGet("GetBasket")]
         [ProducesResponseType(typeof(ShoppingCart), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<ShoppingCart>> GetBasket([FromQuery] string username)
         {
             return Ok(await basketRepository.GetBasket(username) ?? new ShoppingCart(username));
         }
 
-        [HttpPost]
+        [HttpPost("UpdateBasket")]
         [ProducesResponseType(typeof(ShoppingCart), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<ShoppingCart>> UpdateBasket([FromBody] ShoppingCart basket)
         {
             return Ok(await basketRepository.UpdateBasket(basket));
         }
 
-        [HttpPost]
+        [HttpDelete("DeleteBasket")]
         [ProducesResponseType(typeof(void), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<ShoppingCart>> DeleteBasket([FromQuery] string username)
         {

@@ -15,7 +15,7 @@ namespace Basket.API.Models
         }
 
         public string UserName { get; set; }
-        public IEnumerable<ShoppingCartItem> Items { get; set; }
+        public IEnumerable<ShoppingCartItem> Items { get; set; } = new List<ShoppingCartItem>();
         public decimal TotalPrice { get { return Items.Sum(x => x.Price * x.Quantity); } }
     }
 }
