@@ -22,7 +22,7 @@ namespace Catalog.API.Controllers
             this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-        [HttpGet]
+        [HttpGet("GetProduct")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
@@ -30,7 +30,7 @@ namespace Catalog.API.Controllers
         }
 
 
-        [HttpGet]
+        [HttpGet("GetProduct", Name = "GetProduct")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         public async Task<ActionResult<Product>> GetProductById([FromQuery]string id)
@@ -44,15 +44,14 @@ namespace Catalog.API.Controllers
             return Ok(product);
         }
 
-        [Route("[action]/{category}")]
-        [HttpGet]
+        [HttpGet("GetProductsByCategory")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         public async Task<ActionResult<IEnumerable<Product>>> GetProductsByCategory(string category)
         {
             return Ok(await productRepository.GetProductsByCategory(category));
         }
 
-        [HttpPost]
+        [HttpPost("CreateProduct")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         public async Task<ActionResult<Product>> CreateProduct([FromBody] Product product)
         {
@@ -60,14 +59,14 @@ namespace Catalog.API.Controllers
             return CreatedAtRoute("GetProduct", new { id = product.Id }, product);
         }
 
-        [HttpPut]
+        [HttpPut("UpdateProduct")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         public async Task<ActionResult> UpdateProduct([FromBody] Product product)
         {
             return Ok(await productRepository.UpdateProduct(product));
         }
 
-        [HttpDelete]
+        [HttpDelete("DeleteProduct")]
         [ProducesResponseType((int) HttpStatusCode.OK)]
         public async Task<ActionResult<bool>> DeleteProductById([FromQuery] string id)
         {
