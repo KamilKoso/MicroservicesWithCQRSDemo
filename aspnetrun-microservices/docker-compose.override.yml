@@ -68,7 +68,7 @@ services:
     ports:
       - "8001:80"
 
-  dicount.api:
+  discount.api:
     container_name: discount.api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
