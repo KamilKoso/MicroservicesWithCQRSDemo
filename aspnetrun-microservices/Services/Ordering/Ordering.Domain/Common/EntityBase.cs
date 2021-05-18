@@ -2,7 +2,7 @@
 
 namespace Ordering.Domain.Common
 {
-    public abstract class ModelBase
+    public abstract class EntityBase
     {
         public int Id { get; protected set; }
         public string CreatedBy { get; set; }

@@ -1,5 +1,5 @@
 ﻿using Dapper;
-using Discount.gRPC.Models;
+using Discount.gRPC.Entities;
 using Microsoft.Extensions.Configuration;
 using Npgsql;
 using System;

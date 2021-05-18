@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Discount.gRPC.Models;
+using Discount.gRPC.Entities;
 using Discount.gRPC.Protos;
 using System;
 using System.Collections.Generic;

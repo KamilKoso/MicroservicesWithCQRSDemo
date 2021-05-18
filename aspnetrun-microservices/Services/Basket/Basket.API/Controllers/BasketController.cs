@@ -1,5 +1,5 @@
-﻿using Basket.API.GrpcServices;
-using Basket.API.Models;
+﻿using Basket.API.Entities;
+using Basket.API.GrpcServices;
 using Basket.API.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

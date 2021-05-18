@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Discount.gRPC.Models;
+using Discount.gRPC.Entities;
 using Discount.gRPC.Protos;
 using Discount.gRPC.Repositories;
 using Grpc.Core;
@@ -14,15 +14,12 @@ namespace Discount.gRPC.Services
     public class DiscountService : DiscountProtoService.DiscountProtoServiceBase
     {
         private readonly IDiscountRepository discountRepository;
-        private readonly ILogger<DiscountService> logger;
         private readonly IMapper mapper;
 
         public DiscountService(IDiscountRepository discountRepository,
-                               ILogger<DiscountService> logger,
                                IMapper mapper)
         {
             this.discountRepository = discountRepository ?? throw new ArgumentNullException(nameof(discountRepository));
-            this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
             this.mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 

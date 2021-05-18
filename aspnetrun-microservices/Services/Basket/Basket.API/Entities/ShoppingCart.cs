@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Basket.API.Models
+namespace Basket.API.Entities
 {
     public class ShoppingCart
     {
