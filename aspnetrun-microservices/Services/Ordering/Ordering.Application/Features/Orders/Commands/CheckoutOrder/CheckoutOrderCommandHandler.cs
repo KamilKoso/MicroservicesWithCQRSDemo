@@ -11,16 +11,16 @@ using System.Threading.Tasks;
 
 namespace Ordering.Application.Features.Orders.Commands.CheckoutOrder
 {
-    public class CheckoutOrderCommandHandler : IRequestHandler<UpdatetOrderCommand, int>
+    public class CheckoutOrderCommandHandler : IRequestHandler<CheckoutOrderCommand, int>
     {
         private readonly IOrderRepository orderRepository;
         private readonly IMapper mapper;
         private readonly IEmailService emailService;
-        private readonly ILogger<UpdatetOrderCommand> logger;
+        private readonly ILogger<CheckoutOrderCommand> logger;
         public CheckoutOrderCommandHandler(IOrderRepository orderRepository,
                                            IMapper mapper,
                                            IEmailService emailService,
-                                           ILogger<UpdatetOrderCommand> logger)
+                                           ILogger<CheckoutOrderCommand> logger)
         {
             this.orderRepository = orderRepository ?? throw new ArgumentNullException(nameof(orderRepository));
             this.mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
@@ -28,7 +28,7 @@ namespace Ordering.Application.Features.Orders.Commands.CheckoutOrder
             this.emailService = emailService ?? throw new ArgumentNullException(nameof(emailService));
         }
 
-        public async Task<int> Handle(UpdatetOrderCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(CheckoutOrderCommand request, CancellationToken cancellationToken)
         {
             var orderEntity = mapper.Map<Order>(request);
             var newOrder = await orderRepository.AddAsync(orderEntity);
