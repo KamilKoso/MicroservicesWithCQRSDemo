@@ -48,7 +48,7 @@ namespace Discount.API.Extensions
                 }
                 catch (SqlException ex)
                 {
-                    logger.LogError(ex, "An error occurred while migrationg the postgresql database");
+                    logger.LogError(ex, "An error occurred while migrating the postgresql database");
                     if (retry < 50)
                     {
                         Thread.Sleep(2000);

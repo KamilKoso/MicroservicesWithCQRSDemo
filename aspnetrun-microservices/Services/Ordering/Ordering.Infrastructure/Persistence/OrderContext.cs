@@ -36,5 +36,18 @@ namespace Ordering.Infrastructure.Persistence
             }
             return base.SaveChangesAsync(cancellationToken);
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Order>(options =>
+            {
+                options
+                    .Property(x => x.TotalPrice)
+                    .HasPrecision(38, 2);
+            });
+
+
+          base.OnModelCreating(modelBuilder);
+        }
     }
 }
