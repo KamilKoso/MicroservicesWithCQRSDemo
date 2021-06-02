@@ -5,7 +5,7 @@ namespace Ordering.Domain.Entities
 {
     public class Order : EntityBase
     {
-        [StringLength(1024)]
+        [StringLength(50)]
         public string UserName { get; set; }
         public decimal TotalPrice { get; set; }
 
