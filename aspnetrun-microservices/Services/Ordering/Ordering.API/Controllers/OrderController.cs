@@ -23,7 +23,7 @@ namespace Ordering.API.Controllers
             this.mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
 
-        [HttpGet("getOrder")]
+        [HttpGet("GetOrder")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         public async Task<ActionResult<IEnumerable<OrdersVm>>> GetOrdersByUsername([FromQuery] string userName)
         {
@@ -31,7 +31,7 @@ namespace Ordering.API.Controllers
             return await mediator.Send(query);
         }
 
-        [HttpPost("checkoutOrder")]
+        [HttpPost("CheckoutOrder")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         public async Task<ActionResult<int>> CheckoutOrder([FromBody] CheckoutOrderCommand command)
         {
@@ -39,7 +39,7 @@ namespace Ordering.API.Controllers
             return Ok(result);
         }
 
-        [HttpPut("updateOrder")]
+        [HttpPut("UpdateOrder")]
         [ProducesResponseType((int)HttpStatusCode.NoContent)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesDefaultResponseType]
@@ -50,7 +50,7 @@ namespace Ordering.API.Controllers
         }
 
 
-        [HttpDelete("deleteOrder")]
+        [HttpDelete("DeleteOrder")]
         [ProducesResponseType((int)HttpStatusCode.NoContent)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesDefaultResponseType]
