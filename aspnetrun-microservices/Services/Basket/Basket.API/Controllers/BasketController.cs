@@ -60,7 +60,7 @@ namespace Basket.API.Controllers
             return Ok();
         }
 
-        [HttpPost("CheckoutBasket")]
+        [HttpPost("Checkout")]
         [ProducesResponseType((int) HttpStatusCode.Accepted)]
         [ProducesResponseType((int) HttpStatusCode.BadRequest)]
         public async Task<IActionResult> Checkout([FromBody] BasketCheckout basketCheckout)
@@ -68,6 +68,7 @@ namespace Basket.API.Controllers
             var basket = await basketRepository.GetBasket(basketCheckout.UserName);
             if(basket == null) 
                 return BadRequest();
+            basketCheckout.TotalPrice = basket.TotalPrice;
 
             var eventMessage = mapper.Map<BasketCheckoutEvent>(basketCheckout);
             await publishEndpoint.Publish(eventMessage);

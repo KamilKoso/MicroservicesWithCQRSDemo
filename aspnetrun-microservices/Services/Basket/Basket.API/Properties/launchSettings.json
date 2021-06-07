@@ -15,7 +15,9 @@
       "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      },
+      "applicationUrl": "http://localhost:5001",
+      "jsWebView2Debugging": true
     },
     "Basket.API": {
       "commandName": "Project",

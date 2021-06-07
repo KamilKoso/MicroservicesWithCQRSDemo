@@ -46,7 +46,7 @@ namespace Basket.API
             services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>
                 (options => options.Address = new Uri(
                                                 Configuration.GetValue<string>("GrpcSettings:DiscountUrl")));
-            // MassTransit + RabbitMq
+            // MassTransit-RabbitMq
             services.AddMassTransit(config => {
                 config.UsingRabbitMq((context, configurator) => {
                     configurator.Host(Configuration.GetValue<string>("EventBusSettings:HostAddress"));
